@@ -1,0 +1,38 @@
+﻿@model Entrance_Control_App.Models.LoginViewModel;
+@{
+    Layout = "~/Views/Shared/LayoutAuth.cshtml";
+    ViewData["Title"] = "Вход в систему";
+}
+
+<div class="text-center">
+    <h2 class="display-5" style="position: relative; right: 30px">ВХОД В СИСТЕМУ</h2>
+
+</div>
+
+<form method="post" asp-controller="Login" asp-action="Authorisation">
+    <div class="container">
+        <div class="row" style="position: relative; top: 50px; left: 200px;">
+            <div class="col">
+                <label class="text-justify" style="color: aliceblue; position: relative; left: 150px">Введите E-mail</label><br />
+                <input type="text" asp-for="@Model.Email" class="border-dark shadow rounded-lg" style="width: 320px; position: relative; left: 150px " placeholder="Введите E-mail..." value="@Model?.Email" />
+                <span style="color: red; background-color: ghostwhite; font-size: 16px; position: relative; left: 150px" asp-validation-for="@Model.Email" />
+
+            </div>
+        </div>
+        <div class="row" style="position: relative; top: 50px; left: 200px;">
+            <div class="col">
+                <label class="text-justify" style="color: aliceblue; position: relative; left: 150px">Введите пароль</label><br />
+                <input type="password" asp-for="@Model.Password" class="border-dark shadow rounded-lg" style="width: 320px; position: relative; left: 150px " placeholder="Введите пароль..." value="@Model?.Password" />
+                <span style="color: red; background-color: ghostwhite; font-size: 16px; position: relative; left: 150px" asp-validation-for="@Model.Password"/>
+
+            </div>
+        </div>
+       
+        <div>
+            <button type="submit" class="btn btn-outline-light rounded-lg" style="height: 40px; width: 400px; position:relative; left:310px; top:75px">Войти</button>
+        </div>
+    </div>
+
+
+
+</form>

@@ -1,0 +1,69 @@
+﻿@model Entrance_Control_App.Models.MonitorDBViewModel;
+
+
+@{
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+    ViewData["Title"] = "Администратор|Просмотр действий";
+}
+
+@if (User.Identity.IsAuthenticated)
+{
+    <span class="badge badge-light" style="font-size: 16px; position:relative; right: 185px; bottom: 60px">Пользователь: @User.Identity.Name</span>
+
+}
+
+<a class="btn-outline-light" style="position:relative; top: -55px; right: 70px" asp-action="Cabinet" asp-controller="Admin">Назад</a>
+
+<div class="text-center" style="position: relative; top: -20px;">
+    
+    <h2 class="display-5" style="position: relative; right: 30px">АДМИНИСТРИРОВАНИЕ CИСТЕМЫ КОНТРОЛЯ ДОСТУПА</h2>
+    <h4 class="text-center" style="position: relative; right: 30px">ИНФОРМАЦИЯ О ДЕЙСТВИЯХ ПОЛЬЗОВАТЕЛЕЙ</h4>
+
+</div>
+
+<form method="post" asp-controller="Admin" asp-action="MonitorReport">
+    <div class="container-fluid" style="position:relative; top:-10px; color:black; width: 95%">
+
+        <table class="table-secondary table-bordered table-hover" style="width: 100%; height:95%; position:relative; top:-10px">
+            <thead>
+                <tr class="table-info text-center">
+                    <th>ID Item</th>
+                    <th>Hostname</th>
+                    <th>Username</th>
+                    <th>Name Operation</th>
+                    <th>Name Table</th>
+                    <th>Name Columns</th>
+                    <th>ID Record</th>
+                    <th>Old Record</th>
+                    <th>New Record</th>
+                    <th>Date Of Modification Record</th>
+
+                </tr>
+            </thead>
+
+            @foreach (var data in Model.MonitorDB)
+            {
+
+                <tbody>
+                    <tr class="text-center">
+                        <td>@data.IdItem</td>
+                        <td>@data.Hostname</td>
+                        <td>@data.NtUsername</td>
+                        <td>@data.NameOperation</td>
+                        <td>@data.NameTable</td>
+                        <td>@data.NameColumns</td>
+                        <td>@data.IdRecord</td>
+                        <td>@data.OldRecord</td>
+                        <td>@data.NewRecord</td>
+                        <td>@data.DataModificationRecord</td>
+
+                    </tr>
+
+                </tbody>
+            }
+        </table>
+
+        <button type="submit" class="btn btn-outline-primary rounded" style="width:300px; position:relative; left:400px" asp-controller="Admin" asp-action="MonitorReport">Сформировать отчет</button>
+
+    </div>
+</form>

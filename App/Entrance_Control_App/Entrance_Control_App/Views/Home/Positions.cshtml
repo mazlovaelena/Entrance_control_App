@@ -1,0 +1,84 @@
+﻿@model Entrance_Control_App.Models.PositiosViewModel;
+
+@{
+    ViewData["Title"] = "Должности";
+}
+@if (User.Identity.IsAuthenticated)
+{
+    <span class="badge badge-light" style="font-size: 16px; position:relative; right: 185px; bottom: 60px">Пользователь: @User.Identity.Name</span>
+}
+<div class="text-center">
+    <h2 class="display-5" style="position: relative; right: 30px">CИСТЕМА КОНТРОЛЯ ДОСТУПА</h2>
+    <h5 class="text-center" style="position: relative; right: 30px">ДОЛЖНОСТИ</h5>
+</div>
+
+<div class="container-fluid">
+    <div class="btn-group-vertical" role="group" style="position:relative; right:220px; top:70px; width: 250px">
+
+        <a class="btn btn-outline-info rounded-top" asp-controller="Home" asp-action="Entrance">Доступ</a>
+        <a class="btn btn-outline-info" asp-controller="Home" asp-action="Personal">Сотрудники</a>
+        <a class="btn btn-outline-info" asp-controller="Home" asp-action="Positions">Должности</a>
+        <a class="btn btn-outline-info" asp-controller="Home" asp-action="Departments">Отделы</a>
+        <a class="btn btn-outline-info" asp-controller="Home" asp-action="Depart_Pers">Распределение по отделам</a>
+        <a class="btn btn-outline-info" asp-controller="Home" asp-action="Rooms">Помещения</a>
+        <a class="btn btn-outline-info" asp-controller="Home" asp-action="Turnstiles">Типы турникетов</a>
+        <a class="btn btn-outline-info rounded-bottom" asp-controller="Home" asp-action="Statuses">Статус входа</a>
+
+    </div>
+    @if (User.Identity.IsAuthenticated)
+    {
+       
+<div style="position :relative; right:220px; top: 90px">
+    @if (User.IsInRole(UserRole.Admin.ToString()))
+    {
+    <a class="btn btn-outline-primary rounded" style="width:250px" asp-controller="Home" asp-action="CreatePos">Добавить запись</a>
+    }
+
+</div>
+        
+    }
+
+    <table class="table-secondary table-bordered table-hover" style="position:relative; left: 80px; top:-250px; width:1200px; color:black">
+        <thead>
+            <tr class="table-info text-center">
+                <th>ID Должность</th>
+                <th>Наименование должности</th>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    if (User.IsInRole(UserRole.Admin.ToString()))
+                    {
+                        <th>Действия</th>
+                    }
+                }
+            </tr>
+        </thead>
+
+        @foreach (var data in Model.Positions)
+        {
+            <tbody>
+                <tr class="text-center">
+                    <td>@data.IdДолжности</td>
+                    <td>@data.НаименованиеДолжности</td>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        if (User.IsInRole(UserRole.Admin.ToString()))
+                        {
+
+
+                            <td>
+
+                                <a href="@Url.Action("EditPos", "Home", new { id = @data.IdДолжности})" class="btn-outline-primary">Редактировать</a>
+                                |
+                                <a href="@Url.Action("RemoveDataPos", "Home", new { id = @data.IdДолжности})" class="btn-outline-danger">Удалить</a>
+                            </td>
+                        }
+
+                    }
+                </tr>
+
+            </tbody>
+        }
+
+    </table>
+
+</div>

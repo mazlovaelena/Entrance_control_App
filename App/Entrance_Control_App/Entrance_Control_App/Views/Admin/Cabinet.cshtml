@@ -1,0 +1,30 @@
+﻿@{
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+    ViewData["Title"] = "Администратор|Личный кабинет";
+}
+
+@if (User.Identity.IsAuthenticated)
+{
+    <span class="badge badge-light" style="font-size: 16px; position:relative; right: 185px; bottom: 60px">Пользователь: @User.Identity.Name</span>
+}
+
+
+<div class="text-center">
+    
+    <h2 class="display-5" style="position: relative; right: 30px">АДМИНИСТРИРОВАНИЕ CИСТЕМЫ КОНТРОЛЯ ДОСТУПА</h2>
+
+</div>
+
+<div class="container-fluid">
+
+    @if (User.Identity.IsAuthenticated)
+    {
+       <h4 class="text-center" style="position: relative; right: 30px">
+        Вы вошли как администратор сайта: @User.Identity.Name
+        Вам доступен список всех пользователей и их действий на сайте.
+      </h4>
+    }
+
+    <a class="btn btn-outline-info rounded" style="position:relative; left:100px; top:50px; width:800px" asp-controller="Admin" asp-action="Users">Показать список пользователей</a>
+    <a class="btn btn-outline-info rounded" style="position: relative; left: 100px; top: 80px; width: 800px" asp-controller="Admin" asp-action="Monitor">Показать действия на сайте</a>
+</div>

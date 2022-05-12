@@ -1,0 +1,91 @@
+﻿@model Entrance_Control_App.Models.EntranceViewModel;
+
+
+
+@{
+    ViewData["Title"] = "Доступ";
+}
+
+@if (User.Identity.IsAuthenticated)
+{
+    <span class="badge badge-light" style="font-size: 16px; position:relative; right: 185px; bottom: 60px">Пользователь: @User.Identity.Name</span>
+}
+
+
+<div class="text-center">
+    <h2 class="display-5" style="position: relative; right: 30px">CИСТЕМА КОНТРОЛЯ ДОСТУПА</h2>
+    <h5 class="text-center" style="position: relative; right: 30px">ДАННЫЕ О ПЕРЕДВИЖЕНИИ СОТРУДНИКОВ</h5>
+</div>
+
+<div class="container-fluid">
+    <div class="btn-group-vertical" role="group" style="position:relative; right:210px; top:70px; width: 250px">
+
+        <a class="btn btn-outline-info rounded-top" asp-controller="Home" asp-action="Entrance">Доступ</a>
+        <a class="btn btn-outline-info" asp-controller="Home" asp-action="Personal">Сотрудники</a>
+        <a class="btn btn-outline-info" asp-controller="Home" asp-action="Positions">Должности</a>
+        <a class="btn btn-outline-info" asp-controller="Home" asp-action="Departments">Отделы</a>
+        <a class="btn btn-outline-info" asp-controller="Home" asp-action="Depart_Pers">Распределение по отделам</a>
+        <a class="btn btn-outline-info" asp-controller="Home" asp-action="Rooms">Помещения</a>
+        <a class="btn btn-outline-info" asp-controller="Home" asp-action="Turnstiles">Типы турникетов</a>
+        <a class="btn btn-outline-info rounded-bottom" asp-controller="Home" asp-action="Statuses">Статус входа</a>
+
+    </div>
+
+    <div style="position :relative; right:210px; top: 90px">
+
+       
+
+    </div>
+
+    <form method="post" asp-action="EntranceReport" asp-controller="Home">
+        <div class="btn-group-vertical" role="group" style="position: relative; right: 210px; top: 100px; width: 250px">
+
+            <a class="btn btn-outline-primary rounded-top"  asp-controller="Home" asp-action="CreateEntr">Добавить запись</a>
+            <button type="submit" class="btn btn-outline-primary" asp-controller="Home" asp-action="EntranceReport">Отчет</button>
+            <a class="btn btn-outline-primary rounded-bottom" asp-controller="Home" asp-action="ChartEntrance">Диаграмма</a>
+        </div>
+
+        <table class="table-secondary table-bordered table-hover" style="position:relative; left: 80px; top:-350px; width:1200px; color:black;">
+            <thead>
+                <tr class="table-info text-center">
+                    <th>ID_Запись</th>
+                    <th>Дата входа</th>
+                    <th>Дата выхода</th>
+                    <th>Помещение</th>
+                    <th>Сотрудник</th>
+                    <th>Тип турникета</th>
+                    <th>Статус доступа</th>
+                    <th>Действия</th>
+
+                </tr>
+            </thead>
+
+            @foreach (var data in Model.Entrance)
+            {
+                <tbody>
+                    <tr class="text-center">
+
+                        <td>@data.IdЗапись</td>
+                        <td>@data.ДатаВхода</td>
+                        <td>@data.ДатаВыхода</td>
+                        <td>@data.IdRoom.НаименованиеПомещения</td>
+                        <td>@data.IdPers.ФамилияСотрудника @data.IdPers.ИмяСотрудника @data.IdPers.ОтчествоСотрудника</td>
+                        <td>@data.IdType.НаименованиеТипаТурникета</td>
+                        <td>@data.IdStat.НаименованиеСтатус</td>
+                        <td>
+
+                            <a href="@Url.Action("EditEntr", "Home", new { id = data.IdЗапись })" class="btn-outline-primary">Редактировать</a>
+                            |
+                            <a href="@Url.Action("RemoveDataEntr", "Home", new { id = data.IdЗапись})" class="btn-outline-danger">Удалить</a>
+                        </td>
+
+
+                    </tr>
+                </tbody>
+
+            }
+
+        </table>
+
+    </form>
+</div>

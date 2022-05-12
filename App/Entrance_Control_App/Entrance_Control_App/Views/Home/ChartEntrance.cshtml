@@ -1,0 +1,63 @@
+﻿@model Entrance_Control_App.Models.EntranceViewModel;
+
+@{
+    ViewData["Title"] = "Диаграмма передвижения сотрудников";
+}
+
+@if (User.Identity.IsAuthenticated)
+{
+    <span class="badge badge-light" style="font-size: 16px; position:relative; right: 185px; bottom: 60px">Пользователь: @User.Identity.Name</span>
+}
+
+
+<div class="text-center" style="position: relative; bottom:30px">
+    <h2 class="display-5" style="position: relative; right: 30px">CИСТЕМА КОНТРОЛЯ ДОСТУПА</h2>
+    <h5 class="text-center" style="position: relative; right: 30px">ДИАГРАММА</h5>
+
+</div>
+
+<div class="container-fluid" style="width: 1200px; height: 600px; position: relative; right: 50px">
+
+    <canvas id="myChart" style="background-color: whitesmoke; border-radius: 8px; border-color: darkslategray; border-style: groove; width:100%; height: 90%; "></canvas>
+    <script>
+             const ctxx = document.getElementById('myChart').getContext('2d');
+             const myCharts = new Chart(ctxx, {
+                                               type: 'line',
+                                               data: {
+                                               labels: ['Январь','Февраль', 'Март', 'Апрель','Май','Июнь','Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
+                                                        datasets: [
+                                                          {
+                                                            label: 'Количество посетителей в месяц',
+                                                            backgroundColor: 'rgb(0, 183, 255)',
+                                                            borderColor: 'rgb(13, 68, 89)',
+                                                            borderWidth: 2,
+                                                            tension: 0.2,
+                                                            data: [@Model.Months[0], @Model.Months[1], @Model.Months[2], @Model.Months[3], @Model.Months[4], @Model.Months[5], @Model.Months[6], @Model.Months[7], @Model.Months[8], @Model.Months[9], @Model.Months[10], @Model.Months[11]],
+                                                          }]
+                                               },
+                                               options: {
+                                                    scales: {
+                                                        x: {
+                                                            display: true,
+                                                            title: {
+                                                                    display: true,
+                                                                    text: 'Месяц'
+                                                            }
+                                                        },
+                                                        y: {
+                                                            beginAtZero: true,
+                                                            display: true,
+
+                                                            title: {
+                                                                    display: true,
+                                                                    text: 'Количество человек'
+                                                            }
+                                                        }
+                                                    }
+                                               }
+             });
+    </script>
+
+    <br />
+
+</div>

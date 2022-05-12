@@ -1,0 +1,14 @@
+delete from Entrance 
+delete from PersDapart
+delete from Positions
+DBCC CHECKIDENT (Positions, RESEED,0) 
+delete from Departments 
+DBCC CHECKIDENT (Departments, RESEED,0) 
+delete from Personal
+DBCC CHECKIDENT (Personal, RESEED,0) 
+delete from Rooms 
+DBCC CHECKIDENT (Rooms, RESEED,0) 
+delete from Satuses
+DBCC CHECKIDENT (Statuses, RESEED,0) 
+delete from Turnstiles
+DBCC CHECKIDENT (Turnstiles, RESEED,0) 

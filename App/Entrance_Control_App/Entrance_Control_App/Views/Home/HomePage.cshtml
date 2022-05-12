@@ -1,0 +1,25 @@
+﻿@{
+    Layout = "~/Views/Shared/LayoutReg.cshtml";
+    ViewData["Title"] = "ГЛАВНАЯ СТРАНИЦА";
+}
+
+<div class="container-fluid">
+
+    <h2 class="text-center" style="position:relative; top:20px">СИСТЕМА КОНТРОЛЯ ДОСТУПА</h2>
+    <h5 class="text-center" style="position:relative; top:40px">
+        Данная система разработана для для автоматизации контроля передвижения сотрудников предприятия.
+        Система содержит набор таблиц и позволяет пользователю работать с содержащимися в них данными. <br />
+        Для дальнейшей работы с системой в роли пользователя необходимо <a class="text-info" asp-controller="Login" asp-action="Registration">зарегистрироваться</a> либо <a class="text-info" asp-controller="Login" asp-action="Authorisation">авторизоваться</a> на сайте. Более подробная инструкция по работе с системой представлена в <a class="text-info" href="~/RukUser.pdf" target="_blank">Руководстве пользователя</a>.
+                                                                                                                                                                                                                                                                                                                                             <br />Для работы с системой в роли админитстратора прочтите <a class="text-info" href="~/RukAdmin.pdf" target="_blank">Руководство администратора</a>.
+    </h5>
+
+    <a class="btn btn-outline-light rounded-lg" style="height: 40px; width: 400px; position:relative; left:310px; top:75px" asp-controller="Login" asp-action="Authorisation">Войти</a>
+
+    <h5 class="text-center" style="position: relative; right:25px; top:90px">
+        ИЛИ
+    </h5>
+
+    <a class="btn btn-outline-light rounded-lg" style="height: 40px; width: 400px; position:relative; left:310px; top:105px" asp-controller="Login" asp-action="Registration">Зарегистрироваться</a>
+
+    
+</div>

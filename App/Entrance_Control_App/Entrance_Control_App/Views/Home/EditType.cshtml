@@ -1,0 +1,59 @@
+﻿@model Entrance_Control_App.Models.TurnstilesViewModel;
+
+@{
+    ViewData["Title"] = "Редактор записи";
+}
+
+@if (User.Identity.IsAuthenticated)
+{
+    <span class="badge badge-light" style="font-size: 16px; position:relative; right: 185px; bottom: 60px">Пользователь: @User.Identity.Name</span>
+}
+
+
+<div class="text-center">
+    <h2 class="display-5" style="position: relative; right: 30px">CИСТЕМА КОНТРОЛЯ ДОСТУПА</h2>
+    <h5 class="text-center" style="position: relative; right: 30px">ИЗМЕНЕНИЕ ЗАПИСИ (ТАБЛИЦА "ТИПЫ ТУРНИКЕТОВ")</h5>
+</div>
+
+<div class="container-fluid">
+    <div class="btn-group-vertical" role="group" style="position:relative; right:210px; top:70px; width: 250px">
+
+        <a class="btn btn-outline-info rounded-top" asp-controller="Home" asp-action="Entrance">Доступ</a>
+        <a class="btn btn-outline-info" asp-controller="Home" asp-action="Personal">Сотрудники</a>
+        <a class="btn btn-outline-info" asp-controller="Home" asp-action="Positions">Должности</a>
+        <a class="btn btn-outline-info" asp-controller="Home" asp-action="Departments">Отделы</a>
+        <a class="btn btn-outline-info" asp-controller="Home" asp-action="Depart_Pers">Распределение по отделам</a>
+        <a class="btn btn-outline-info" asp-controller="Home" asp-action="Rooms">Помещения</a>
+        <a class="btn btn-outline-info" asp-controller="Home" asp-action="Turnstiles">Типы турникетов</a>
+        <a class="btn btn-outline-info rounded-bottom" asp-controller="Home" asp-action="Statuses">Статус входа</a>
+
+    </div>
+
+    <form method="post" asp-action="EditType" asp-controller="Home">
+
+        <div class="container" style="position: relative; left: 80px; top: -270px; width: 1200px">
+
+            <div class="row">
+                <div class="col">
+                    
+                    <input type="hidden" asp-for="@Model.ID_Type" class="border-dark shadow rounded-lg" style="background-color:aliceblue" value="@Model?.ID_Type" name="ID_Type" readonly />
+
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col">
+                    <label class="text-justify" style="color: aliceblue;">Название Помещения</label><br />
+                    <input type="text" asp-for="@Model.TypeName" class="border-dark shadow rounded-lg" style="background-color:aliceblue" value="@Model?.TypeName" name="TypeName" />
+                    <span style="color: red; background-color: ghostwhite; font-size: 14px;" asp-validation-for="@Model.TypeName" />
+
+                </div>
+            </div>
+
+
+            <br /><button class="btn btn-outline-primary" type="submit">Сохранить изменения</button>
+        </div>
+
+    </form>
+</div>

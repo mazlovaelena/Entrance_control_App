@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32228.343
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entrance_Control_App", "Entrance_Control_App\Entrance_Control_App.csproj", "{3F1763F0-42EC-4C8D-AEE4-8CA50EB23BDC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3F1763F0-42EC-4C8D-AEE4-8CA50EB23BDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F1763F0-42EC-4C8D-AEE4-8CA50EB23BDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F1763F0-42EC-4C8D-AEE4-8CA50EB23BDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F1763F0-42EC-4C8D-AEE4-8CA50EB23BDC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F649D808-FAD3-4B54-89DE-81311F4798AC}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,57 @@
+﻿@model Entrance_Control_App.Models.UserViewModel;
+
+
+@{
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+    ViewData["Title"] = "Администратор|Просмотр пользователей";
+}
+
+@if (User.Identity.IsAuthenticated)
+{
+    <span class="badge badge-light" style="font-size: 16px; position:relative; right: 185px; bottom: 60px">Пользователь: @User.Identity.Name</span>
+
+}
+
+<a class="btn-outline-light" style="position:relative; top: -55px; right: 70px" asp-action="Cabinet" asp-controller="Admin">Назад</a>
+
+<div class="text-center">
+    
+    <h2 class="display-5" style="position: relative; right: 30px">АДМИНИСТРИРОВАНИЕ CИСТЕМЫ КОНТРОЛЯ ДОСТУПА</h2>
+    <h4 class="text-center" style="position: relative; right: 30px">ИНФОРМАЦИЯ О ЗАРЕГИСТРИРОВАННЫХ ПОЛЬЗОВАТЕЛЯХ САЙТА</h4>
+
+</div>
+
+<div class="container-fluid" style="position:relative; top:20px; color:black">
+
+    <table class="table-secondary table-bordered table-hover" style="position:relative; top:-20px; width:100%">
+        <thead>
+            <tr class="table-info text-center">
+                <th>ID Пользователь</th>
+                <th>Роль на сайте</th>
+                <th>Email</th>
+                <th>Пароль</th>
+                <th>Действия</th>
+
+            </tr>
+        </thead>
+
+        @foreach (var data in Model.Users)
+        {
+
+            <tbody>
+                <tr class="text-center">
+                    <td>@data.IdUser</td>
+                    <td>@data.UserRole</td>
+                    <td>@data.Email</td>
+                    <td>@data.Password</td>
+                    <td>
+                        <a href="@Url.Action("DeleteUsers", "Admin", new { id = data.IdUser})" class="btn-outline-danger">Удалить</a>
+                    </td>
+
+                </tr>
+
+            </tbody>
+        }
+
+    </table>
+</div>

@@ -1,0 +1,17 @@
+﻿@model ErrorViewModel
+@{
+    ViewData["Title"] = "Ошибка";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form action="~/css/site.css">
+    <div class="img" style="position:relative; right: -130px;">
+        <img src="~/css/error.gif"/>
+        <embed type="gif" style="display:none;" />
+
+    </div>
+    <div class="text-center">
+        <h1 class="text-danger font-weight-bolder">СТРАНИЦА НЕ НАЙДЕНА</h1>
+    </div>
+    <br /><button type="submit" class="btn btn-outline-light rounded" asp-area="" asp-controller="Home" asp-action="Entrance" style="position:relative; width:500px; left: 300px; top:50px">На главную</button>
+</form>

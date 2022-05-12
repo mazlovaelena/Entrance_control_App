@@ -1,0 +1,45 @@
+﻿@model Entrance_Control_App.Models.LoginRegViewModel;
+@{
+    Layout = "~/Views/Shared/LayoutReg.cshtml";
+    ViewData["Title"] = "Регистрация";
+}
+
+<div class="text-center">
+    <h2 class="display-5" style="position: relative; right: 30px">РЕГИСТРАЦИЯ</h2>
+
+</div>
+
+<form method="post" asp-controller="Login" asp-action="Registration">
+    <div class="container">
+        <div class="row" style="position: relative; top: 50px; left: 200px;">
+            <div class="col">
+                <label class="text-justify" style="color: aliceblue; position: relative; left: 150px">Ваш E-mail</label><br />
+                <input type="text" asp-for="Email" class="border-dark shadow rounded-lg" style="width: 320px; position: relative; left: 150px " placeholder="Введите E-mail..." value="@Model?.Email" />
+                <span style="color: red; background-color: ghostwhite; font-size: 14px; position: relative; left: 150px " asp-validation-for="Email" />
+
+            </div>
+        </div>
+        <div class="row" style="position: relative; top: 50px; left: 200px;">
+            <div class="col">
+                <label class="text-justify" style="color: aliceblue; position: relative; left: 150px">Придумайте пароль</label><br />
+                <input type="password" asp-for="Password" class="border-dark shadow rounded-lg" style="width: 320px; position: relative; left: 150px " placeholder="Введите пароль..." value="@Model?.Password" />
+                <span style="color: red; background-color: ghostwhite; font-size: 14px; position: relative; left: 150px " asp-validation-for="Password"/>
+
+            </div>
+        </div>
+        <div class="row" style="position: relative; top: 50px; left: 200px;">
+            <div class="col">
+                <label class="text-justify" style="color: aliceblue; position: relative; left: 150px">Повторите пароль</label><br />
+                <input type="password" asp-for="PasswordRetry" class="border-dark shadow rounded-lg" style="width: 320px; position: relative; left: 150px " placeholder="Введите пароль..." value="@Model?.PasswordRetry" />
+                <span style="color: red; background-color: ghostwhite; font-size: 14px; position: relative; left: 150px " asp-validation-for="PasswordRetry"/>
+
+            </div>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-outline-light rounded-lg" style="height: 40px; width: 400px; position:relative; left:310px; top:75px">Зарегистрироваться</button>
+        </div>
+    </div>
+
+
+
+</form>
